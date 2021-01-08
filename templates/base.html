@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{page_title}}</title>
+    <style media="screen">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+
+      img{
+        max-width: 100%;
+      }
+
+      .container{
+        width: 90%;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background: rgb(9, 130, 147); */
+      }
+
+      .table-wrap{
+        width: 90%;
+        height: 600px;
+        margin: 0px auto;
+        display: grid;
+        grid-template-areas:  "header header"
+                              "aside main"
+                              "footer footer";
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 25% 65% 10%;
+      }
+
+      .table-wrap h1{
+        grid-area: header;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+      }
+
+      .table-wrap .profil{
+        grid-area: aside;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+      }
+
+      .table-wrap .profil .description{
+        display: flex;
+        width: 95%;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .table-wrap .data-pasien{
+        grid-area: main;
+        padding: 15px;
+        box-sizing: border-box;
+        border-right: 1px solid black;
+      }
+
+      .table-wrap .data-pasien table{
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      .table-wrap .data-pasien table, td, th {
+        border: 1px solid black;
+      }
+
+      .table-wrap .footer{
+        width: 100%;
+        grid-area: footer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+      }
+
+      .table-wrap .footer img{
+        display: block;
+        collapse: collapse;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TUGAS TAKEHOME UAS MATA KULIAH RPL GENAP 2020.</h1>
+      <div class="table-wrap">
+        <h1>UJIAN UAS GENAP 2020</h1>
+        <div class="profil">
+          <p>Profil</p>
+          <img src="{% static "nora.jpeg" %}" width="200px">
+          <div class="description">
+            <h3>Nama : Nora Calsia Satriani</h3>
+            <h3>Nim : D22.2019.02733</h3>
+            <h3>Kelompok : D22.33</h3>
+          </div>
+        </div>
+
+        <div class="data-pasien">
+          <h2>{{action}}</h2>
+          {% block content %}
+
+          {% endblock %}
+        </div>
+        <p class="footer">Dibuat Oleh Nora Calsia Satriani anda UAS 2020</p>
+      </div>
+    </div>
+  </body>
+</html>

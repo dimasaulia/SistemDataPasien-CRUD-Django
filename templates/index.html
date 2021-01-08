@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <br>
+  <h3 ><a style="background-color:rgb(35, 158, 236);color:white;" href="{% url 'dataPasien:create' %}">Tambah Data Pasien</a></h3>
+  <br>
+  {% for message in messages %}
+    <h3 style="color:rgb(249, 202, 39)">NOTIFIKASI! : {{message}}</h3>
+  {% endfor %}
+  <table>
+    <tr>
+      <th>No</th>
+      <th>ID Data</th>
+      <th>No Pasien</th>
+      <th>Nama</th>
+      <th>Alamat</th>
+      <th>Kota</th>
+      <th>No Telepom</th>
+      <th>Opsi</th>
+    </tr>
+    {% for data in data_pasien %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{data.id}}</td>
+      <td>{{data.no_pasien}}</td>
+      <td>{{data.nama}}</td>
+      <td>{{data.alamat}}</td>
+      <td>{{data.kota}}</td>
+      <td>{{data.no_telepon}}</td>
+      <td> <a href="{% url 'dataPasien:update' data.id %}">Edit</a> <a href="{% url 'dataPasien:delete' data.id %}">Hapus</a> </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

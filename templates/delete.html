@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 style="color:red; border:none">Apakah Anda Yakin Ingin Menghapus Data Di Bawah?</h1>
+<br>
+  <table>
+    <tr>
+      <th>ID Database</th>
+      <th>NO Pasien</th>
+      <th>Nama</th>
+      <th>Alamat</th>
+      <th>Kota</th>
+      <th>No Telepom</th>
+    </tr>
+
+    <tr>
+      <td>{{data.id}}</td>
+      <td>{{data.no_pasien}}</td>
+      <td>{{data.nama}}</td>
+      <td>{{data.alamat}}</td>
+      <td>{{data.kota}}</td>
+      <td>{{data.no_telepon}}</td>
+    </tr>
+
+  </table>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" name="hapus" value="Hapus">
+    <input type="submit" name="batal" value="Batal">
+  </form>
+{% endblock %}
